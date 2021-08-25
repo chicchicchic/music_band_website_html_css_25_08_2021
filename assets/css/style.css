@@ -28,6 +28,8 @@ html {
 
 }
 
+/* Begin: Header */
+
 #header {
     /* Cho header dinh sat ben tren trinh duyet khi scroll xuong */
     position: fixed;
@@ -97,7 +99,7 @@ html {
     line-height: 38px;
 }
 
-/* Icon arrow down and search */
+/* Begin: Icon arrow down and search */
 
 #nav .nav-arrow-down {
     font-size: 16px;
@@ -119,12 +121,21 @@ html {
     line-height: 46px;
 }
 
+/* Begin: Icon arrow down and search */
+
+/* End: Header */
+
+/* Begin: Slider */
 #slider {
     margin-top: 46px;
-    
+
     height: 500px;
     background-color: green;
 }
+
+/* End: Slider */
+
+
 
 #content {
 
