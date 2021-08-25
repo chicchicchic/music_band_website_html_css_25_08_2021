@@ -29,10 +29,21 @@ html {
 }
 
 #header {
+    /* Cho header dinh sat ben tren trinh duyet khi scroll xuong */
+    position: fixed;
+    top: 0;
+    left: 0; 
+    right: 0;
+    /* ================== */
+
     height: 46px;
     background-color: #000;
 
 
+}
+
+#nav {
+    display: inline-block;
 }
 
 #nav, .subnav {
@@ -86,9 +97,33 @@ html {
     line-height: 38px;
 }
 
+/* Icon arrow down and search */
+
+#nav .nav-arrow-down {
+    font-size: 16px;
+}
+
+#header .search-btn {
+    float: right;
+    padding: 0 21px;
+}
+
+#header .search-btn:hover {
+    cursor: pointer;
+    background-color: #f44336;
+}
+
+#header .search-icon {
+    color: #fff;
+    font-size: 20px;
+    line-height: 46px;
+}
+
 #slider {
-    min-height: 500px;
-    /* background-color: #333; */
+    margin-top: 46px;
+    
+    height: 500px;
+    background-color: green;
 }
 
 #content {
