@@ -41,6 +41,12 @@ html {
     height: 46px;
     background-color: #000;
 
+    /* Fix bug background cua slider 
+    che di phan header */
+    /* Bug nay o phut thu 26:00 
+    Chapter 8 - Lesson 41 */
+    z-index: 1;
+
 
 }
 
@@ -121,16 +127,52 @@ html {
     line-height: 46px;
 }
 
-/* Begin: Icon arrow down and search */
+/* End: Icon arrow down and search */
 
 /* End: Header */
 
-/* Begin: Slider */
-#slider {
-    margin-top: 46px;
 
-    height: 500px;
-    background-color: green;
+/* Begin: Slider */
+
+#slider {
+    position: relative;
+    margin-top: 46px;
+    padding-top: 50%;
+    background: url('/assets/img/slider/slider1.jpg') top center / cover no-repeat;
+
+    
+}
+
+#slider .text-content {
+    position: absolute;
+    bottom: 47px;
+    color: #fff;
+    
+    /* Cach 1 can giua */
+    /* left: 50%;
+    transform: translateX(-50%); */
+
+    /* Cach 2 can giua */
+    width: 100%;
+
+    /* Cach 3 can giua */
+    /* left: 0;
+    right: 0; */
+
+    /* Note: Cach nao don gian va hieu qua thi lam, 
+    biet nhieu cach de tuy co ung bien */
+
+    text-align: center;
+}
+
+#slider .text-heading {
+    font-weight: 500;
+    font-size: 24px;
+}
+
+#slider .text-decription {
+    font-size: 15px;
+    margin-top: 25px;
 }
 
 /* End: Slider */
