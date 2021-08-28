@@ -24,6 +24,14 @@ html {
 
 */
 
+/* Fix: xóa bỏ hiệu ứng float của những tag con khiến 
+tag chứa nó không thể ôm các tag con */
+/* Đặt ở đây vì sẽ dùng nhỉu (bug này ở phút 12:45 chapter 8 lesson 43 */
+.clear {
+    clear: both;
+}
+
+
 #main {
 
 }
@@ -179,9 +187,75 @@ html {
 
 
 
+/* Begin: Content */
 #content {
 
 }
+
+#content .content-section {
+    width: 800px;
+    padding: 64px 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#content .section-heading {
+    font-size: 30px;
+    /* font-weight giam độ dày của nét chữ */
+    font-weight: 500;
+    /* Căn chữ ra giữa */
+    text-align: center;
+    /* Cho từng ký tự trong chữ THE BAND cách xa nhau 1 khoảng tầm 4px */
+    letter-spacing: 4px;
+}
+
+#content .section-sub-heading {
+    font-size: 15px;
+    text-align: center;
+    margin-top: 25px;
+    /* Chữ nghiên */
+    font-style: italic;
+    /* Cho chữ mờ thêm 1 tý. Mờ còn 0.6 = 60% */
+    opacity: 0.6;
+}
+
+#content .about-text {
+    font-size: 15px;
+    margin-top: 25px;
+    /* Căn đều giữa 2 bên lề */
+    text-align: justify;
+    /* Khoảng cách giữa các hàng: Tiếng việt thì đặt 1.6, Tiếng Anh thì là 1.4 */
+    line-height: 1.4;
+}
+
+#content .member-list {
+    margin-top: 48px;
+}
+
+#content .member-item {
+    float: left;
+    /* Canh 2 mép của 3 item bằng mép chữ phí trên about-text */
+    /* Cách 1: có 3 item, mỗi item = 33.33333 cộng lại sẽ bằng 100%*/
+    width: 33.33333%; 
+    /* Cách 2: Sữ dụng hàm để chia */
+    /* width: calc(100% / 3); */
+    text-align: center;
+}
+
+#content .member-name {
+    font-size: 15px;
+}
+
+#content .member-img {
+    width: 154px;
+    margin-top: 15px;
+    /* Bo tròn gốc */
+    border-radius: 4px;
+}
+
+
+/* End: Content */
+
 
 #footer {
 
