@@ -375,9 +375,132 @@ tag chứa nó không thể ôm các tag con */
         color: #000;
         background-color: #ccc;
     }
-
-
     /* End: Places */
+
+    /* Begin: Modal bật lên khi nhấn vào nút Buy Tickets */
+    .modal {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        /* Tạo background mờ mờ phủ cả giao diện */
+        background: rgba(0, 0, 0, 0.4);
+        align-items: center;
+        justify-content: center;
+        /* display: flex thi model ticket mới hiện lên, nhưng mặc 
+        định thì nó ẩn đi cho tới khi user click vào button, 
+        nên đặt display: none   */
+        display: none;
+    }
+
+    .modal.open {
+        display: flex;
+    }
+
+    .modal-container {
+        background: #fff;
+        width: 900px;
+        /* Đăt max-width: calc(100% - 32px) nghĩa là khi ta kéo 
+        màn hình nhỏ lại dưới chiều rộng width: 900px thì cái
+        modal ticket nó không có dính xác 2 mép của màn hình mà
+        vẫn cách 2 bên trái phải của modal ticket mỗi bên 16px, xem nó
+        như là responsive cho modal ticket */
+        max-width: calc(100% - 32px);
+        min-height: 200px;
+        position: relative;
+    }
+
+    /* Begin: modal-header */
+    .modal-header {
+        background: #009688;
+        height: 130px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        color: #fff;
+    }
+
+    .modal-heading-icon {
+        margin-right: 16px;
+    }
+    /* End: modal-header */
+    
+    
+    /* Begin: modal-close */
+    .model-close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        color: #fff;
+        padding: 12px;
+        cursor: pointer;
+        /* Cho dấu Close lúc người dùng chưa click nó mờ mờ xíu */
+        opacity: 0.8;
+    }
+
+    .model-close:hover {
+        /* Sau khi hover vào nút Close thì nút close sáng lên tạo 
+        cảm giác có thể click cho người dùng */
+        opacity: 1;
+    }
+    /* End: modal-close */
+
+
+    /* Begin: modal-body */
+    .modal-body {
+        padding: 16px;
+    }
+
+    .modal-label {
+        display: block;
+        font-size: 15px;
+        margin-bottom: 12px;
+    }
+
+    .modal-input {
+        border: 1px solid #ccc;
+        width: 100%;
+        font-size: 15px;
+        padding: 10px;
+        margin-bottom: 24px;
+    }
+
+    #buy-tickets {
+        background: #009688;
+        border: none;
+        color: #fff;
+        width: 100%;
+        font-size: 15px;
+        text-transform: uppercase;
+        padding: 18px;
+        cursor: pointer;
+    }
+
+    #buy-tickets:hover {
+        opacity: 0.9;
+    }
+
+    /* End: modal-body */
+
+
+    /* Begin: modal-footer */
+        .modal-footer {
+            padding: 16px;
+            text-align: right;
+        }
+        
+        .modal-footer a {
+            color: #2196F3;
+        }
+    /* End: modal-footer */
+
+
+
+    /* End: Modal bật lên khi nhấn vào nút Buy Tickets */
+
+
 
 /* End: Tour section */
 
