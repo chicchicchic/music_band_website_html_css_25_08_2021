@@ -262,6 +262,7 @@ tag chứa nó không thể ôm các tag con */
 /* End: About section */
 
 /* Begin: Tour section */
+    /* Begin: Tickets */
     #content .tour-section {
         background: #000;
     }
@@ -300,8 +301,84 @@ tag chứa nó không thể ôm các tag con */
         có tính chất block nên đặt được width height, nhờ 
         vậy mà có thể margin top là số âm để di chuyên ngược lên */
         margin-top: -3px;
+    }
+    /* End: Tickets */
+
+    /* Begin: Places */
+    .places-list {
+        /* margin-top: 32px; */
+        /* Thêm 2 margin âm 2 bên để cho 2 mép của các item nó sát mép 2 bên trái và phải */
+        /* margin-left: -8px; */
+        /* margin-right: -8px; */
+
+        /* Viet gop 3 hàng trên lại, margin bottom = 16px + 32px = 48px*/
+        margin: 32px -8px 48px;
+       
+    }
+    
+    .place-item {
+        float: left;
+        width: 33.33333%;
+        padding: 0 8px;
+        
 
     }
+
+    
+    .place-img {
+        /* Thêm width = 100% thì nó sẽ bằng kích thu7oc1 thẻ 
+        chứa nó, nó sẽ không vượt quá nữa */
+        width: 100%;
+        /* Cho nó thành display = block vì trước đó là có tính chất inline
+        nên nó tạo ra 1 khoảng trống cách với block "place-body" phía dưới,
+        2 khối block kế nhau thì không có khoảng trống đó nữa */
+        display: block;
+    }
+    
+    .place-img:hover {
+        opacity: 0.6;
+    }
+
+    .place-body {
+        padding: 16px;
+        font-size: 15px;
+        background-color: #fff;
+    }
+
+    .place-heading {
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .place-time {
+        margin-top: 15px;
+        color: #757575;
+    }
+
+    .place-description {
+        margin-top: 15px;
+        line-height: 1.4;
+    }
+
+    .place-buy-btn {
+        color: #fff;
+        background-color: #000;
+        text-decoration: none;
+        padding: 11px 16px;
+        margin-top: 15px;
+        /* cho display = inline-block để nó ko bị lấn 
+        lên trên sau khi padding */
+        display: inline-block;
+    }
+
+    .place-buy-btn:hover {
+        color: #000;
+        background-color: #ccc;
+    }
+
+
+    /* End: Places */
+
 /* End: Tour section */
 
 
