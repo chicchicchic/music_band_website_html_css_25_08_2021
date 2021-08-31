@@ -31,6 +31,12 @@ tag chứa nó không thể ôm các tag con */
     clear: both;
 }
 
+/* Tạo 1 class text white để sữ dụng cho các nội dung muốn chữ có màu trắng */
+.text-white {
+    /* đặt important để ưu tiên nhất */
+    color: #fff !important;
+}
+
 
 #main {
 
@@ -199,6 +205,7 @@ tag chứa nó không thể ôm các tag con */
     margin-right: auto;
 }
 
+/* Begin: About section */
 #content .section-heading {
     font-size: 30px;
     /* font-weight giam độ dày của nét chữ */
@@ -252,6 +259,50 @@ tag chứa nó không thể ôm các tag con */
     /* Bo tròn gốc */
     border-radius: 4px;
 }
+/* End: About section */
+
+/* Begin: Tour section */
+    #content .tour-section {
+        background: #000;
+    }
+
+    #content .tickets-list {
+        margin-top: 40px;
+        list-style: none;
+        background-color: #fff;
+    }
+
+    #content .tickets-list li { 
+        color: #757575;   
+        font-size: 15px;
+        padding: 11px 16px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    #content .tickets-list .sold-out {
+        background-color: #f44336;
+        color: #fff;
+        padding: 3px 4px;
+        margin-left: 16px;
+    }
+
+    #content .tickets-list .quatity {
+        float: right;
+        width: 24px;
+        height: 24px;
+        background-color: #000;
+        color: #fff;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 24px;
+        /* Note: 1 thẻ có tính chất inline khi thêm 
+        float vào thì dc hỉu thẻ này có display là block,
+        có tính chất block nên đặt được width height, nhờ 
+        vậy mà có thể margin top là số âm để di chuyên ngược lên */
+        margin-top: -3px;
+
+    }
+/* End: Tour section */
 
 
 /* End: Content */
