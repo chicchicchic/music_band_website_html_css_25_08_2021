@@ -395,6 +395,8 @@ tag chứa nó không thể ôm các tag con */
     }
 
     .modal.open {
+        /* class 'modal' có thêm class 'open' thì phần css bên dưới sẽ được thực thi,
+        display: flex để nó hiện Modal Ticket lên */
         display: flex;
     }
 
@@ -409,6 +411,13 @@ tag chứa nó không thể ôm các tag con */
         max-width: calc(100% - 32px);
         min-height: 200px;
         position: relative;
+
+        /* Thêm 1 thuộc tính css animation để áp dụng animation có keyframes tên là 'modalFadeIn' 
+        vừa viết bên dưới, muốn áp dụng animation này cho thằng nào thì thêm vào thằng đó, ở 
+        đây ta áp dụng cho class 'modal-container' */
+        /* Note: 'ease' là kiểu chuyển động lúc nhanh lúc chậm */
+        /* Note:  0.5s (0.5 giây) là tổng thời gian mà animation này diễn ra và kết thúc */
+        animation: modalFadeIn ease 0.5s;
     }
 
     /* Begin: modal-header */
@@ -495,6 +504,31 @@ tag chứa nó không thể ôm các tag con */
             color: #2196F3;
         }
     /* End: modal-footer */
+
+
+    /* Thêm 1 cái keyframes để tạo chuyển động mượt mà khi users click vào nút
+    Buy Ticket ở phần Tour thì cái Modal ticket sẽ xuất hiện với 1 animation  */
+    /* Kế tiếp là đặt tên cho keyframes có tên 'modalFadeIn' */
+    @keyframes modalFadeIn {
+        /* Trong keyframes có from (từ đâu) và to (đến đâu) */
+        from{
+            /* Muốn nó chạy từ trên xuống từ dùng thuộc tính transform với translateY (trục đứng)
+            một khoảng bằng -140px (trừ ngược để nó đi lên), có thể test thử việc này bằng cách
+            thêm  transform: translateY(-140px) vào class 'modal-container' bên tab Style của trình 
+            duyệt để ước lượng điểm bắt đầu chạy của Modal Ticket */
+            transform: translateY(-140px);
+
+            /* Muốn cho nó xuất hiện từ mờ dần dần đến khi nó rõ */
+            opacity: 0;
+        }
+        to {
+            /* Điểm kết thúc là 0 là vị trí ban đầu của Modal Ticket (chính giữa màn hình)  */
+            transform: translateY(0px);
+
+            /* Điểm kết thúc thì opacity: 1 là rõ nét */
+            opacity: 1;
+        }
+    }
 
 
 

@@ -107,7 +107,10 @@
                                 <h3 class="place-heading">New York</h3>
                                 <p class="place-time">Fri 27 Nov 2016</p>
                                 <p class="place-description">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <a href="#" class="place-buy-btn">Buy Tickets</a>
+                                <!-- Bỏ href='#' đi và đặt thêm 1 class là 'js-buy-ticket' vào để dùng class này viết javascript 
+                                để lắng nghe sự kiện người dùng khi người dùng click vào và hiện bảng Modal Ticket lên giao diện 
+                                người dùng -->
+                                <button class="place-buy-btn js-buy-ticket">Buy Tickets</button>
                             </div>
                         </div>
 
@@ -118,7 +121,7 @@
                                 <h3 class="place-heading">Paris</h3>
                                 <p class="place-time">Sat 28 Nov 2016</p>
                                 <p class="place-description">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <a href="#" class="place-buy-btn">Buy Tickets</a>
+                                <button class="place-buy-btn js-buy-ticket">Buy Tickets</button>
                             </div>
                         </div>
 
@@ -129,7 +132,7 @@
                                 <h3 class="place-heading">San Francisco</h3>
                                 <p class="place-time">Sun 29 Nov 2016</p>
                                 <p class="place-description">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <a href="#" class="place-buy-btn">Buy Tickets</a>
+                                <button class="place-buy-btn js-buy-ticket">Buy Tickets</button>
                             </div>
                         </div>
                         <div class="clear"></div>
@@ -156,10 +159,15 @@
     </div>
 
     <!-- Modal: Cửa số bật lên khi nhấn vào nút Buy Tickets -->
-    <div class="modal">
-        <div class="modal-container">
+
+    <!-- Đặt thêm 1 class 'js-modal' để gọi để viết javascript cho Modal Ticket, còn class 'modal'
+    thì để css  -->
+    <div class="modal js-modal">
+        <div class="modal-container js-modal-container">
             <!-- Nút đóng cửa sổ của modal -->
-            <div class="model-close">
+
+            <!-- Đặt thêm 1 class 'js-modal-close' với ý nghĩa tương tự class 'js-modal' bên trên  -->
+            <div class="model-close js-model-close">
                 <i class="ti-close"></i>
             </div>
 
@@ -209,6 +217,70 @@
             </footer>
         </div>
     </div>
+
+
+    <!-- Đoạn javascript để hiện Modal Ticket khi người dùng click vào nút Buy Tickets ở phần Tour-section -->
+    <script>
+        // Đặt ra 1 biến để chọc vào html lấy tất cả class có tên 'js-buy-ticket'
+        const buyBtns = document.querySelectorAll('.js-buy-ticket')
+
+        // Đặt ra 1 biến để chọc vào html lấy class có tên 'js-modal', là class có của thẻ div bao bọc 
+        // phần html của Modal Ticket
+        const modal = document.querySelector('.js-modal')
+
+        // Đặt ra 1 biến để chọc vào html lấy class có tên 'js-modal-container', tạo ra biến này để viết javascript
+        // để tránh hiện tượng nổi bọt khi người dùng click vào nội dung bên trong thì nó không bị ẩn Modal Ticket đi
+        const modalContainer = document.querySelector('.js-modal-container')
+
+        // Đặt ra 1 biến để chọc vào html lấy class có tên 'js-modal-close', là class có của thẻ div bao bọc 
+        // phần html của nút đóng Modal Ticket sau khi Modal Ticket được bật lên
+        const modalClose = document.querySelector('.js-model-close')
+
+
+
+        // Tạo 1 hàm đặt tên là 'showBuyTickets' để bật lên Modal Ticket
+        function showBuyTickets() {
+            // Note: trong javascript cung cấp một quản lý danh sách class gọi là classList
+            // sau đó chấm thêm 1 cái gõ 'add' để thêm 1 class có tên 'open' 
+            modal.classList.add('open')
+        }
+
+        // Tạo thêm 1 hàm đặt tên là 'hideBuyTickets' để ẩn lên Modal Ticket khi người dùng click vào nút close (dấu X)
+        // có trên Modal Ticket khi nó hiện lên
+        function hideBuyTickets() {
+            // Tương tự thì chấm 'remove' thì sẽ xóa 1 class có tên 'open' khỏi thẻ div có class 'modal' 
+            modal.classList.remove('open')
+        }
+
+        // Dùng vòng lặp để lặp qua từng nút, trong vòng lặp có 1 biến mới là 'buyBtn', không có chữ 's'
+        // nghĩa là nó đại diện cho từng nút một, chỉ áp dụng vòng lặp cho những dạng danh sách. Trong trường hợp này 
+        // ta có nút close Modal Tickets chỉ có 1 nên khỏi dùng vòng lặp để đóng nó
+        for(const buyBtn of buyBtns) {
+            // Nút buyBtn thêm 'addEventListener' để lắng nghe thằng 'click'
+            // sau đó paste tên hàm 'showBuyTickets' vừa tạo bên trên truyền vào
+            // Nghĩa của đoạn này là click vào nút 'buyBtn' thì hàm 'showBuyTickets' sẽ được gọi
+            buyBtn.addEventListener('click', showBuyTickets)
+        }
+
+        // Lắng nghe sự kiện ẩn Modal Ticket
+        modalClose.addEventListener('click', hideBuyTickets)
+
+        // Lắng nghe sự kiện ẩn Modal Ticket khi người dùng click vào khoảng không của modal
+        modal.addEventListener('click', hideBuyTickets)
+
+        // Lắng nghe sự kiện khi user click vào nội dung bên trong Modal Ticket mà Modal Ticket không bị
+        // ẩn đi (do ảnh hưởng của tính chất nổi bọt), mà nó chỉ nổi bọt tới thẻ div class 'js-modal-container'
+        // chứ nó không nổi bọt tới thẻ div cha có class 'js-modal' (gây ẩn khi click bất cứ thẻ con nào của class js-modal)
+        // Bonus Knowledge: Có thể viết thẳng 1 function vào như bên dưới mà không cần phải viết 1 function riêng lẻ như trên,
+        // cách viết này không cần đặt tên function vì nó truyền trực tiếp vào luôn
+        // Trong function này thêm vào 1 biến có tên 'event', nghĩa là mỗi lần click vào 1 hành vi diễn ra thì nó luôn trả 
+        // cho mình 1 event
+        modalContainer.addEventListener('click', function (event) {
+            // Ngừng việc nổi bọt lại từ thằng 'modalContainer', nổi bọt tới thằng container là stop lại và không nổi ra ngoài nữa
+            event.stopPropagation()
+        })
+
+    </script>
 </body>
 </html>
 
