@@ -20,9 +20,8 @@ html {
     2. kích thước
     3. màu sắc
     4. kiểu dáng (kiểu chữ, hình tròn, vuông, ...)
-
-
 */
+ /* Common (là những class chung hoặc những cái dùng chung */
 
 /* Fix: xóa bỏ hiệu ứng float của những tag con khiến 
 tag chứa nó không thể ôm các tag con */
@@ -37,7 +36,42 @@ tag chứa nó không thể ôm các tag con */
     color: #fff !important;
 }
 
+/* Class chung 'text-center' sẽ dùng cho những chỗ cần căn giữa, nên tạo hẵn class dùng chung */
+/* Note: những class nào chỉ css duy nhất 1 thuộc tính như class 'text-center' thì nên thêm
+important vào để tránh bị ghi đè, còn những class nhìu thuộc tính thì không cần */
+.text-center {
+    text-align: center !important;
+}
 
+/* Hàng */
+.row {
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+/* Cột */
+.col {
+    float: left;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+/* Class chung khi hàng có 2 cột */
+.col-half {
+    /* 100 chia 2 */
+    width: 50%;
+}
+
+/* Class chung khi hàng có 3 cột */
+.col-third {
+    /* 100 chia 3 */
+    width: 33.33333%;
+}
+
+
+
+
+/* Main */
 #main {
 
 }
@@ -239,15 +273,21 @@ tag chứa nó không thể ôm các tag con */
     margin-top: 48px;
 }
 
-#content .member-item {
+/*#content .member-item {
     float: left;
-    /* Canh 2 mép của 3 item bằng mép chữ phí trên about-text */
-    /* Cách 1: có 3 item, mỗi item = 33.33333 cộng lại sẽ bằng 100%*/
+    (comment) Canh 2 mép của 3 item bằng mép chữ phí trên about-text 
+    (comment) Cách 1: có 3 item, mỗi item = 33.33333 cộng lại sẽ bằng 100%
     width: 33.33333%; 
-    /* Cách 2: Sữ dụng hàm để chia */
-    /* width: calc(100% / 3); */
+    (comment)Cách 2: Sữ dụng hàm để chia 
+     width: calc(100% / 3); 
+
     text-align: center;
-}
+
+    (comment)(Bài 48) Sau khi áp dụng row-colume layout thì xóa luôn float: left; 
+    width: 33.33333%; 
+    (comment) Bỏ luôn class 'member-item' vì chỉ còn 'text-align: center', mà text-align: center
+    thì cần dùng nhiều trong project nên tạo cho nó 1 class riêng có tên 'text-center'  
+}*/
 
 #content .member-name {
     font-size: 15px;
@@ -311,18 +351,30 @@ tag chứa nó không thể ôm các tag con */
         /* margin-left: -8px; */
         /* margin-right: -8px; */
 
-        /* Viet gop 3 hàng trên lại, margin bottom = 16px + 32px = 48px*/
-        margin: 32px -8px 48px;
+        /* Viet gop 3 hàng trên lại, margin bottom = 16px + 32px = 48px (chưa áp dụng
+        row - colume layout) */
+        /* margin: 32px -8px 48px; */
+
+        /* Sau khi áp dụng row - colume layout thì xóa 'margin: 32px -8px 48px' bên trên và 
+        sửa lại như sau: (vì trái phải -8px đã thừa hưởng từ class 'row' bên trên khi thêm 
+        class 'row' vào phần html */
+        margin-top: 32px;
+        margin-bottom: 48px;
        
     }
     
-    .place-item {
-        float: left;
+    /* Sau khi css chung class 'col-third {width: 33.33333%' thì xóa lun class 'place-item' 
+    cả bên css và html */
+    /* .place-item 
         width: 33.33333%;
-        padding: 0 8px;
-        
 
-    }
+        ( float: left;
+        padding: 0 8px;  (Chưa áp dụng row - colume layout) )
+
+        (comment) Sau khi áp dụng row - colume layout thì bỏ 'float: left và
+        padding: 0 8px' vì nó đã thừa hưởng class 'col' đã css ở phần Common, việc bây giờ
+        là thêm class 'col' vào html của 'place-item' là xong 
+    */
 
     
     .place-img {
@@ -369,6 +421,7 @@ tag chứa nó không thể ôm các tag con */
         /* cho display = inline-block để nó ko bị lấn 
         lên trên sau khi padding */
         display: inline-block;
+        cursor: pointer;
     }
 
     .place-buy-btn:hover {

@@ -64,16 +64,23 @@
                 <p class="about-text">
                     We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                 </p>
-                <div class="member-list">
-                    <div class="member-item">
+                <!-- Thêm class 'row' với ý nghĩa như (row-colume layout), bỏ 'row' cũng không sao vì
+                vốn dĩ css ban đầu của member-list chỉ là margin-top: 48px, dùng dev tool mới thấy nó
+                margin trái phải -8px  -->
+                <div class="row member-list">
+
+                    <!-- Sau khi áp dụng row-colume layout bài 48 thì thêm vào class 'col' 'col-third' và
+                    thay thế luôn class 'member-item' bằng class chung có tên 'text-center', vì cứ chỗ nào 
+                    cần căn giữa thì dùng class 'text-center' này-->
+                    <div class="col col-third text-center">
                         <p class="member-name">Name</p>
                         <img src="./assets/img/band/member1.jpg" alt="Name" class="member-img">
                     </div>
-                    <div class="member-item">
+                    <div class="col col-third text-center">
                         <p class="member-name">Name</p>
                         <img src="./assets/img/band/member1.jpg" alt="Name" class="member-img">
                     </div>
-                    <div class="member-item">
+                    <div class="col col-third text-center">
                         <p class="member-name">Name</p>
                         <img src="./assets/img/band/member1.jpg" alt="Name" class="member-img">
                     </div>
@@ -99,8 +106,13 @@
                     </ul>
 
                     <!-- Places -->
-                    <div class="places-list">
-                        <div class="place-item">
+
+                    <!-- Thêm vào class 'row' đã css vào đây (áp dụng phương pháp row - colume layout) (bài 48)-->
+                    <div class="row places-list">
+                        <!-- Thêm vào class 'col' đã css vào đây (áp dụng phương pháp row - colume layout) (bài 48)-->
+                        <!-- Xóa class 'place-item' và thay thế bằng class 'col-third' vừa css (áp dụng phương pháp 
+                        row - colume layout) (bài 48) -->
+                        <div class="col col-third">
                             <img src="./assets/img/places/place1.jpg" alt="New York" class="place-img">
                             <!-- Đặt 1 thẻ div chứa phần content của place "New York" để dễ cho việc padding -->
                             <div class="place-body">
@@ -114,7 +126,10 @@
                             </div>
                         </div>
 
-                        <div class="place-item">
+                        <!-- Thêm vào class 'col' đã css vào đây (áp dụng phương pháp row - colume layout) (bài 48)-->
+                        <!-- Xóa class 'place-item' và thay thế bằng class 'col-third' vừa css (áp dụng phương pháp 
+                        row - colume layout) (bài 48) -->
+                        <div class="col col-third">
                             <img src="./assets/img/places/place2.jpg" alt="Paris" class="place-img">
                             <!-- Đặt 1 thẻ div chứa phần content của place "Paris" để dễ cho việc padding -->
                             <div class="place-body">
@@ -125,7 +140,10 @@
                             </div>
                         </div>
 
-                        <div class="place-item">
+                        <!-- Thêm vào class 'col' đã css vào đây (áp dụng phương pháp row - colume layout) (bài 48)-->
+                        <!-- Xóa class 'place-item' và thay thế bằng class 'col-third' vừa css (áp dụng phương pháp 
+                        row - colume layout) (bài 48) -->
+                        <div class="col col-third">
                             <img src="./assets/img/places/place3.jpg" alt="San Francisco" class="place-img">
                             <!-- Đặt 1 thẻ div chứa phần content của place "San Francisco" để dễ cho việc padding -->
                             <div class="place-body">
