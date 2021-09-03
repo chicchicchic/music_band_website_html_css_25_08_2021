@@ -7,7 +7,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Project The Band by Khanh</title>
+    <!-- Thay đổi ảnh (icon) trên thanh Tab thay vì ảnh mặc định ban đầu -->
+    <!-- Cái 'link rel="icon" href="favicon.ico" type="image/x-icon"' thì search google 
+    với key 'link favicon html' là ra. Việc bây giờ là thay nội dung trong href thành link logo đã
+    tải từ google về thư mục asset  -->
+    <link rel="icon" href="./assets/img/logo_cross.jpg" type="image/x-icon" />
+
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- Link 'Themify icon' (google search) -->
     <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css">
@@ -17,19 +23,20 @@
         <div id="header">
             <!-- Begin: nav -->
             <ul id="nav">
-                <li><a href="">Home</a></li>
-                <li><a href="">Band</a></li>
-                <li><a href="">Tour</a></li>
-                <li><a href="">Contact</a></li>
+                <!-- href # là nó nhảy lên trên cùng của trang (Home Page) -->
+                <li><a href="#">Home</a></li>
+                <li><a href="#band">Band</a></li>
+                <li><a href="#tour">Tour</a></li>
+                <li><a href="#contact">Contact</a></li>
                 <li>
                     <a href="#">
                         More
                         <i class="nav-arrow-down ti-angle-down"></i> 
                     </a>
                     <ul class="subnav">
-                        <li><a href="">Merchandise</a></li>
-                        <li><a href="">Extras</a></li>
-                        <li><a href="">Media</a></li>
+                        <li><a href="#">Merchandise</a></li>
+                        <li><a href="#">Extras</a></li>
+                        <li><a href="#">Media</a></li>
                     </ul>
                 </li>
             </ul>
@@ -58,7 +65,8 @@
 
         <div id="content">
             <!-- About section -->
-            <div class="content-section">
+            <!-- Đặt id tại đây để nó chuyển đến trang này khi user click vào các nút trên thanh Navigation -->
+            <div id="band" class="content-section">
                 <h2 class="section-heading">THE BAND</h2>
                 <p class="section-sub-heading">We love music</p>
                 <p class="about-text">
@@ -86,12 +94,12 @@
                     </div>
                     <!-- Fix: xóa bỏ hiệu ứng float của những tag con khiến 
                     tag chứa nó không thể ôm các tag con -->
-                    <div class="clear"></div>
+                    <!-- <div class="clear"></div> (Thằng div clear này đã bỏ vì đã tạo lớp giả css cho class 'row' (Bài 49))-->
                 </div>  
             </div>
 
             <!-- Tour section -->
-            <div class="tour-section">
+            <div id="tour" class="tour-section">
                 <!-- Bọc 1 thẻ div ngoài content section để cho nó phủ toàn màn hình, background nó mới toàn chiều ngang màn hình -->
                 <div class="content-section">
                     <!-- copy tên class 'text-white bên Css vừa tạo vào những thẻ mà mình muốn chữ nó màu trắng' -->
@@ -122,7 +130,8 @@
                                 <!-- Bỏ href='#' đi và đặt thêm 1 class là 'js-buy-ticket' vào để dùng class này viết javascript 
                                 để lắng nghe sự kiện người dùng khi người dùng click vào và hiện bảng Modal Ticket lên giao diện 
                                 người dùng -->
-                                <button class="place-buy-btn js-buy-ticket">Buy Tickets</button>
+                                <!-- Nút button này lúc đầu là thẻ a nhưng teacher đã cập nhật lại thành thẻ button ở bài 46 -->
+                                <button class="btn js-buy-ticket">Buy Tickets</button>
                             </div>
                         </div>
 
@@ -136,7 +145,7 @@
                                 <h3 class="place-heading">Paris</h3>
                                 <p class="place-time">Sat 28 Nov 2016</p>
                                 <p class="place-description">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <button class="place-buy-btn js-buy-ticket">Buy Tickets</button>
+                                <button class="btn js-buy-ticket">Buy Tickets</button>
                             </div>
                         </div>
 
@@ -150,27 +159,81 @@
                                 <h3 class="place-heading">San Francisco</h3>
                                 <p class="place-time">Sun 29 Nov 2016</p>
                                 <p class="place-description">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <button class="place-buy-btn js-buy-ticket">Buy Tickets</button>
+                                <button class="btn js-buy-ticket">Buy Tickets</button>
                             </div>
                         </div>
-                        <div class="clear"></div>
+                        <!-- <div class="clear"></div> (Thằng div clear này đã bỏ vì đã tạo lớp giả css cho class 'row' (Bài 49)) -->
 
 
                     </div>
                 </div>
             </div>
 
-            <!-- Contact section -->
-            <div class="content-section">
+            <!--Begin: Contact section -->
+            <div id="contact" class="content-section">
                 <h2 class="section-heading">CONTACT</h2>
                 <p class="section-sub-heading">Fan? Drop a note!</p>
+
+                <!-- Note: Nếu kiểm soát tốt thì đặt thêm class 'contact-content' vào chung class
+                'row', nếu không thì có thể tạo thêm thẻ div bao bọc thẻ div 'row' này và đặt tên
+                'contact-content' -->
+                <div class="row contact-content">
+                    <!-- Info -->
+                    <div class="col col-half contact-info">
+                        <p><i class="ti-location-pin"></i>Chicago, US</p>
+                        <p><i class="ti-mobile"></i>Phone: +00 151515</p>
+                        <p><i class="ti-email"></i>Email: mail@mail.com</p>
+                    </div>
+
+                    <!-- Form -->
+                    <div class="col col-half contact-form">
+                        <form action="">
+                            <div class="row">
+                                <div class="col col-half">
+                                    <!-- Muốn nó gửi thông báo khi người dùng không nhập hoặc nhập không đúng type thì thêm
+                                    attribute 'required' vào thẻ input. Ở trường hợp này thì type bằng text nên user không 
+                                    nhập gì mà nhấn submit thì nó sẽ thông báo cho user -->
+                                    <input type="text" name="" placeholder="Name" required id="" class="form-control">
+                                </div>
+                                <div class="col col-half">
+                                    <!-- type= email thì sẽ thông báo khi users không nhập gì hoặc nhập sai định dạng mail
+                                    thì sẽ thông báo cho users -->
+                                    <input type="email" name="" placeholder="Email" required id="" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row mt-8">
+                                <div class="col col-full">
+                                    <input type="text" name="" placeholder="Message" required id="" class="form-control">
+                                </div>
+                            </div>
+                            <input class="btn pull-right mt-16" type="submit" value="SEND">
+                        </form>
+                    </div>
+                </div>
             </div>
+            <!--End: Contact section -->
+
+            <!-- Begin: Map Image  -->
+            <div class="map-section">
+                <img src="./assets/img/map.jpg" alt="Map">
+            </div>
+
+            <!-- End: Content -->
         </div>
 
         <!-- End: Content -->
 
         <div id="footer">
-            
+            <!-- English: 'socials list' là list các mạng xã hội -->
+            <div class="socials-list">
+                <a href=""><i class="ti-facebook"></i></a>
+                <a href=""><i class="ti-instagram"></i></a>
+                <a href=""><i class="ti-youtube"></i></a>
+                <a href=""><i class="ti-pinterest"></i></a>
+                <a href=""><i class="ti-twitter-alt"></i></a>
+                <a href=""><i class="ti-linkedin"></i></a>
+            </div>
+            <p class="copyright">Powered by <a href="#">Bui Chi Khanh </a></p>
         </div>
 
 

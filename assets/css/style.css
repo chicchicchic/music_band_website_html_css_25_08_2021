@@ -6,21 +6,27 @@
 }
 
 html {
+    /* scroll-behavior: smooth là hành vi khi cuộn, nó sẽ tạo cảm giác cuộn khi ta click vào 
+    các nút dẫn đến page tương ứng trên thanh navigation (Phần 8 bài 51) */
+    scroll-behavior: smooth;
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Trình tự Css: */
 /*
     1. Từ ngoài vào trong 
     2. Từ trên xuống dưới
     3. Tổng quan đến chi tiết
 */
-
 /*
     1. vị trí
     2. kích thước
     3. màu sắc
     4. kiểu dáng (kiểu chữ, hình tròn, vuông, ...)
 */
+
+
+
  /* Common (là những class chung hoặc những cái dùng chung */
 
 /* Fix: xóa bỏ hiệu ứng float của những tag con khiến 
@@ -43,10 +49,60 @@ important vào để tránh bị ghi đè, còn những class nhìu thuộc tín
     text-align: center !important;
 }
 
+/* Tạo ra class chung 'pull-right' nghĩa là kéo sang phải, ở project này thì nó áp dụng cho botton 'Submit' */
+.pull-right {
+    float: right !important;
+}
+
+/* Tạo class chung 'mt-8' cho những thằng cần đẩy lên 8px, vì nó có xuất hiện nhiều nên ta tạo class
+chung này */
+.mt-8 {
+    margin-top: 8px !important;
+}
+
+/* Tương tự mt-8 bên trên */
+.mt-16 {
+    margin-top: 16px !important;
+}
+
+/* Tạo class btn này vì tất cả các botton đều y nhau nên cho nó vào phần dùng chung để đở phải 
+css lại nhiều */
+.btn {
+    color: #fff;
+    background-color: #000;
+    text-decoration: none;
+    padding: 11px 16px;
+    margin-top: 15px;
+    /* cho display = inline-block để nó ko bị lấn 
+    lên trên sau khi padding */
+    display: inline-block;
+    border: none;
+
+}
+
+.btn:hover {
+    color: #000;
+    background-color: #ccc;
+    cursor: pointer;
+}
+
 /* Hàng */
 .row {
     margin-left: -8px;
     margin-right: -8px;
+}
+
+/* Trong trường hợp thẻ cha không ôm hết thẻ con thì thường ta sẻ dùng 1 thẻ div có class 'clear'
+, nhưng cách đó làm code rất xấu. Nên, bây giờ ta sẽ tạo 1 element giả. Chúng ta thường đặt thẻ div 'clear'
+cuối thẻ cha để xứ lý trường hợp này, nên bây giờ ta cũng đặt element giả là 'after' để cho nó giải quyết vấn đề,
+không dùng lớp giả 'before vì nó sẽ chèn vào đầu div cha */
+
+/* Dùng cách này thì những class 'row' cần ôm hết class con của nó thì ta sẽ không cần thêm div 'clear' vào html nữa,
+ta sẽ xóa đi những class 'row' bên html mà lúc trước ta đã tạo, */
+.row::after {
+    content: "";
+    display: block;
+    clear: both;
 }
 
 /* Cột */
@@ -54,6 +110,11 @@ important vào để tránh bị ghi đè, còn những class nhìu thuộc tín
     float: left;
     padding-left: 8px;
     padding-right: 8px;
+}
+
+/* Class chung khi hàng chỉ có 1 cột */
+.col-full {
+    width: 100%;
 }
 
 /* Class chung khi hàng có 2 cột */
@@ -234,7 +295,9 @@ important vào để tránh bị ghi đè, còn những class nhìu thuộc tín
 
 #content .content-section {
     width: 800px;
-    padding: 64px 0;
+    /* padding bottom = 112 vì nó lấy bottom bang dầu là 64 và padding thêm 48px nữa nên là tổng
+    padiing bottom là 112px (Bài 50)  */
+    padding: 64px 0 112px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -358,9 +421,7 @@ important vào để tránh bị ghi đè, còn những class nhìu thuộc tín
         /* Sau khi áp dụng row - colume layout thì xóa 'margin: 32px -8px 48px' bên trên và 
         sửa lại như sau: (vì trái phải -8px đã thừa hưởng từ class 'row' bên trên khi thêm 
         class 'row' vào phần html */
-        margin-top: 32px;
-        margin-bottom: 48px;
-       
+        margin-top: 32px;     
     }
     
     /* Sau khi css chung class 'col-third {width: 33.33333%' thì xóa lun class 'place-item' 
@@ -378,7 +439,7 @@ important vào để tránh bị ghi đè, còn những class nhìu thuộc tín
 
     
     .place-img {
-        /* Thêm width = 100% thì nó sẽ bằng kích thu7oc1 thẻ 
+        /* Thêm width = 100% thì nó sẽ bằng kích thước thẻ 
         chứa nó, nó sẽ không vượt quá nữa */
         width: 100%;
         /* Cho nó thành display = block vì trước đó là có tính chất inline
@@ -412,22 +473,7 @@ important vào để tránh bị ghi đè, còn những class nhìu thuộc tín
         line-height: 1.4;
     }
 
-    .place-buy-btn {
-        color: #fff;
-        background-color: #000;
-        text-decoration: none;
-        padding: 11px 16px;
-        margin-top: 15px;
-        /* cho display = inline-block để nó ko bị lấn 
-        lên trên sau khi padding */
-        display: inline-block;
-        cursor: pointer;
-    }
-
-    .place-buy-btn:hover {
-        color: #000;
-        background-color: #ccc;
-    }
+    
     /* End: Places */
 
     /* Begin: Modal bật lên khi nhấn vào nút Buy Tickets */
@@ -582,19 +628,97 @@ important vào để tránh bị ghi đè, còn những class nhìu thuộc tín
             opacity: 1;
         }
     }
-
-
-
     /* End: Modal bật lên khi nhấn vào nút Buy Tickets */
-
-
-
 /* End: Tour section */
 
+
+
+/* Begin: Contact Section */
+
+    /* Begin: Contact Info */
+    .contact-content {
+        margin-top: 48px;
+    }
+
+    .contact-info {
+        font-size: 18px;
+        line-height: 0.5;
+    }
+
+    /* Cách selector này là cách css selector nâng cao, ý nghĩa là 
+    css cho tất cả thẻ i thuộc class 'contact-info' có class chứa cái chuỗi 'ti-' */
+    .contact-info i[class*="ti-"] {
+        width: 30px;
+        display: inline-block;
+    }
+    /* End: Contact Info */
+
+    /* Begin: Contact Form */
+        .contact-form {
+            font-size: 15px;
+        }
+
+        .contact-form .form-control {
+            padding: 10px;
+            border: 1px solid #ccc;
+            width: 100%;
+            /* outline là cái viền cho ô input, chỉnh outline y như border */
+            outline: 1px solid #229954 ;
+            cursor: pointer;
+        }
+
+
+        /* Xóa bỏ class này vì nó dùng class chung 'btn' rồi, cái này do teacher ko xem kỹ nên 
+        viết thừa 1 class làm code bị dài (Bài 50) */
+        /* .contact-form .form-submit-btn {
+            background-color: #000;
+            color: #fff;
+            (comment) Thăng border vì nó có viền mặt định màu khác nên tà cách cho nó màu đen 
+            hoặc border=none cũng được 
+            border: 1px solid #000;
+            padding: 10px 16px;
+            (comment) float:right để đẩy sang bên phải 
+            float: right;
+            cursor: pointer;
+        } */
+
+    /* End: Contact Form */
+/* End: Contact Section */
+
+
+/* Begin: Map Image */
+
+/* End: Map Image */
+.map-section img {
+    width: 100%;
+}
 
 /* End: Content */
 
 
+/* Begin: Footer */
 #footer {
-
+    padding: 64px 16px;
+    text-align: center;
 }
+
+#footer .socials-list {
+    font-size: 24px;
+}
+
+#footer .socials-list a {
+    color: rgba(0, 0, 0, 0.6);
+    text-decoration: none;
+}
+
+#footer .copyright a,
+#footer .socials-list a:hover {
+    color: rgba(0, 0, 0, 0.4);
+    
+}
+
+#footer .copyright {
+    margin-top: 15px;
+    color: rgba(0, 0, 0, 0.6);
+}
+/* End: Footer */
