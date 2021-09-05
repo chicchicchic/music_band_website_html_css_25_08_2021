@@ -15,6 +15,9 @@
     <link rel="icon" href="./assets/img/logo_cross.jpg" type="image/x-icon" />
 
     <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- (Chapter 9 session 55) link file responsive.css sau file style.css thì nó sẻ xét độ ưu tiên responsive hơn -->
+    <link rel="stylesheet" href="./assets/css/responsive.css">
     <!-- Link 'Themify icon' (google search) -->
     <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css">
 </head>
@@ -47,6 +50,13 @@
                 <i class="search-icon ti-search"></i>
             </div>
             <!-- End: Search button -->
+
+            <!-- (Chapter 9 session 55) Thêm Mobile menu button dùng trong responsive mobile  -->
+            <!-- Begin: Mobile menu button -->
+            <div id="mobile-menu" class="mobile-menu-btn">
+                <i class="menu-icon ti-menu"></i>
+            </div>
+            <!-- End: Mobile menu button -->
 
         </div>
 
@@ -299,7 +309,6 @@
         </div>
     </div>
 
-
     <!-- Đoạn javascript để hiện Modal Ticket khi người dùng click vào nút Buy Tickets ở phần Tour-section -->
     <script>
         // Đặt ra 1 biến để chọc vào html lấy tất cả class có tên 'js-buy-ticket'
@@ -362,6 +371,75 @@
         })
 
     </script>
+
+
+    <!-- Đoạn javascript để Ẩn/hiện Menu khi user click vào menu-icon khi web responsive về dạng mobile -->
+    <script>
+        // Note: Sau khi khai báo 2 biến này rồi console log nó ra và qua bên dev tool kiểm tra bên
+        // tab console mà lúc để để chuột vào biến mà nó không highlight bên Web thì nên nên chạy
+        // live server lại
+
+        // Đặt ra biến header để get Id tới thẻ header để set JS thay đổi thuôc tính css khi user click vào menu icon
+        var header = document.getElementById('header');
+
+        // Đăt ra biến mobileMenu để get Id để set JS khi người dùng click vào
+        var mobileMenu = document.getElementById('mobile-menu')
+
+        // Đặt ra biến headerHeight để nó lấy giá trị chiều cao header lần đầu chạy lưu vào biến này
+        // nghĩa là giá trị ban đầu nó là 46px
+        var headerHeight = header.clientHeight;
+
+
+        // fuction khi user click vào mobileMenu
+        mobileMenu.onclick = function () {
+            // So sánh nếu header.clientHeight = headerHeight(lần đầu chạy thì bên css nó bao nhiêu là nó
+            // lưu vào biến này). Nếu clientHeight = 46px thì gán nó vào isClosed (đã ẩn Menu)
+            var isClosed = header.clientHeight === headerHeight; 
+
+            if (isClosed) {
+                // Nếu mà nó isClosed thì sẽ chuyển giá trị height của header bên css thành auto, mà khi height auto
+                // thì chiều cao header không còn 46px nữa mà nó ôm hết thẻ con trong nó, vì thế các thẻ li (đã ẩn khi 
+                // ta set overflow = hidden) thì bây giờ nó được nằm trong thẻ cha nó, không còn lòi ra ngoài thẻ cha 
+                // nữa nên nó cũng không còn dính hidden nửa mà chuyển thành overfow: visible (hiện). Thằng header 
+                // ôm đến đâu thì background color cũng ôm đến đó
+                header.style.height = 'auto';
+            }
+            else {
+                // Nếu nó bằng null thì height của header sẽ lấy 46px(bên css) ban đầu làm giá trị, vì thế thì các thẻ li bị lòi ra
+                // khỏi 46px nên dính overflow:hidden và bị ẩn đi cùng với background color cao 46px
+                header.style.height = null;
+            }
+        }
+
+        // Chức năng tự động đóng lại khi user chọn vào các thẻ con trong Menu
+
+        // Đặt biến này để lấy ra tất cả thẻ a có dấu # trong href
+        var menuItems = document.querySelectorAll('#nav li a[href*="#"] ');
+        
+        // Sau khi select tất cả thẻ a trong #nav thì nó ra 1 mãng chứa 7 phần tử tương ứng 7 thẻ a
+        // Dùng vòng lập để lập qua tất cả phần tử trong mãng để lấy ra tất cả phần tử trong mãng
+        for (var i=0; i<menuItems.length; i++){
+            var menuItem = menuItems[i];
+
+            // Sau khi lấy ra tất cả phần tử trong mãng bằng vòng lập thì bây giờ bắt sự kiện click 
+            // cho tất cả phần tử đó, múc đích là nếu user có click vào bất kỳ phần tử nào của mãng thi 
+            // nó cũng ẩn cái menu đi 
+            menuItem.onclick = function () {
+                // Muốn kiểm tra nó có in ra chính nó khi user click vào thẻ a nào thì console.log (this)
+                // để nó in ra chính cái thẻ mà nó được click
+                // console.log(this);
+
+                // Để ẩn sau khi users click vào bất kỳ thẻ nào trong menu thì cũng ẩn y như khi user click
+                // vào Mobile menu icon
+                header.style.height = null;
+            }
+        }
+
+
+    </script>
+
+
+    
 </body>
 </html>
 

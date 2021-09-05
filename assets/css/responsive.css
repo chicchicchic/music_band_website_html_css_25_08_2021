@@ -1,0 +1,29 @@
+/* Responsive cho PC, min-width: 1024px nghĩa là nó sẽ áp dụng những thuộc tính trong phần PC
+khi độ rộng >= 1024 */
+/* Vì ở project này thì PC ngon rồi nên kh6ng cần responsive nữa */
+@media (min-width: 1024px) {
+
+}
+
+/* Responsive cho Tablet (iPad), min-width: 1024px nghĩa là nó sẽ áp dụng những thuộc tính trong 
+phần tablet khi độ rộng >= 740 & < 1024*/
+/* Vì project nầy đơn giản nên ở bài 54 thì đã responsive luôn Tablet rồi */
+@media (min-width: 740px) and (max-width: 1023px) {
+
+}
+
+/* Responsive cho Mobile, min-width: 1024px nghĩa là nó sẽ áp dụng những thuộc tính trong 
+phần mobile khi độ rộng < 740*/
+@media (max-width: 740px) {
+    #nav > li{
+        /* display: block; thì từng thẻ li trong nav nó sẽ thành block nên nó sẽ xếp theo chiều dọc thay
+        vì ban đầu nó là chiều ngang */
+        display: block;
+    }
+
+    /* Ẩn nut search đi vì mẫu W3 ko có nút đó ở dạng mobile */
+    #header .search-btn {
+        display: none;
+    }
+
+}

@@ -156,6 +156,13 @@ ta sẽ xóa đi những class 'row' bên html mà lúc trước ta đã tạo, 
     Chapter 8 - Lesson 41 */
     z-index: 1;
 
+    /* (Chapter 9 session 55): vì thẻ header nó chỉ có 46px nên khi các thẻ li (thẻ con) sau khi 
+    set dạng block thì nó xếp theo chiều dọc nên nó sẽ bị thò ra khỏi thẻ cha nó (header) và vì
+    mặc định thằng header nó có overflow: visible nên những thẻ li lòi ra nó vẫn hiện, nhưng ta
+    lại muốn mặc định là nó ẩn đi nên ta set overflow:hidden để ẩn đi. Và ta sẽ viết JS để khi user 
+    click vào menu-mobile icon nó mới hiện lên  */
+    overflow: hidden;
+
 
 }
 
@@ -220,6 +227,7 @@ ta sẽ xóa đi những class 'row' bên html mà lúc trước ta đã tạo, 
     font-size: 16px;
 }
 
+#header .mobile-menu-btn,
 #header .search-btn {
     float: right;
     padding: 0 21px;
@@ -230,6 +238,17 @@ ta sẽ xóa đi những class 'row' bên html mà lúc trước ta đã tạo, 
     background-color: #f44336;
 }
 
+#header .mobile-menu-btn:hover {
+    background-color: #ccc;
+}
+
+/* Lý do không sét màu icon khi hover vào luôn thằng bên trên vì nó sẽ ưu tiên color màu trắng
+của class menu-icon bên dưới hơn */
+#header .mobile-menu-btn:hover .menu-icon {
+    color: #000;
+}
+
+#header .menu-icon, 
 #header .search-icon {
     color: #fff;
     font-size: 20px;
@@ -295,11 +314,23 @@ ta sẽ xóa đi những class 'row' bên html mà lúc trước ta đã tạo, 
 
 #content .content-section {
     width: 800px;
+    /* (Chapter 9 session 54) Đặt thêm max-width = 100% thì khi màn hình iPad nhỏ lại 768px thì 
+    nó không thỏa mản 800px ban đầu nên nó tự kéo 800 về 768px thành 100%. Max-width trong trường 
+    hợp này mạnh hơn width (vì khai báo sau) nên nó làm được việc đó */
+    max-width: 100%;
+
     /* padding bottom = 112 vì nó lấy bottom bang dầu là 64 và padding thêm 48px nữa nên là tổng
     padiing bottom là 112px (Bài 50)  */
     padding: 64px 0 112px;
     margin-left: auto;
     margin-right: auto;
+
+    /* (Chapter 9 session 54) Vì nó còn 1 khoảng hở do class chung 'row' nó margin trái phải -8px,
+    nên cách fix là padding trái phảo 8px là ok, nhưng do cái mẫu thì lề trái phải phần content  nó
+    tầm 16px nên là mình tăng thằng tay 16px luôn là nó fix xong luôn responsive cho iPad */
+    padding-left: 16px;
+    padding-right: 16px;
+
 }
 
 /* Begin: About section */
