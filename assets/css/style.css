@@ -160,9 +160,9 @@ ta sẽ xóa đi những class 'row' bên html mà lúc trước ta đã tạo, 
     set dạng block thì nó xếp theo chiều dọc nên nó sẽ bị thò ra khỏi thẻ cha nó (header) và vì
     mặc định thằng header nó có overflow: visible nên những thẻ li lòi ra nó vẫn hiện, nhưng ta
     lại muốn mặc định là nó ẩn đi nên ta set overflow:hidden để ẩn đi. Và ta sẽ viết JS để khi user 
-    click vào menu-mobile icon nó mới hiện lên  */
-    overflow: hidden;
-
+    click vào menu-mobile icon nó mới hiện lên  
+    overflow: hidden; (bỏ ở phút 13:30 (Chapter 9 session 57))
+    */
 
 }
 
@@ -225,6 +225,18 @@ ta sẽ xóa đi những class 'row' bên html mà lúc trước ta đã tạo, 
 
 #nav .nav-arrow-down {
     font-size: 16px;
+}
+
+/* (Chapter 9 lesson 56) fix bugs: vì khi responsive cho #nav display: block nên  nó chiếm hết 
+chiều ngang trình duyêt nên Mobile Menu icon nó bị đẩy xuống dưới, nên fix bằng cách position absolute
+để nó đè lên thằng header và set vị trí nó */
+#header .mobile-menu-btn {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+
+    /* Ẩn Mobile Menu trên PC */
+    display: none;
 }
 
 #header .mobile-menu-btn,
@@ -364,7 +376,8 @@ của class menu-icon bên dưới hơn */
 }
 
 #content .member-list {
-    margin-top: 48px;
+    /* (Chapter 9 lesson 58) giảm margin-top từ 48 xuống 32  */
+    margin-top: 32px;
 }
 
 /*#content .member-item {
@@ -452,7 +465,8 @@ của class menu-icon bên dưới hơn */
         /* Sau khi áp dụng row - colume layout thì xóa 'margin: 32px -8px 48px' bên trên và 
         sửa lại như sau: (vì trái phải -8px đã thừa hưởng từ class 'row' bên trên khi thêm 
         class 'row' vào phần html */
-        margin-top: 32px;     
+        /* (Chapter 9 lesson 58) giảm margin-top từ 32 xuống 16  */
+        margin-top: 16px;     
     }
     
     /* Sau khi css chung class 'col-third {width: 33.33333%' thì xóa lun class 'place-item' 

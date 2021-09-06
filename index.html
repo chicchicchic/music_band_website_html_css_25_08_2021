@@ -51,8 +51,10 @@
             </div>
             <!-- End: Search button -->
 
-            <!-- (Chapter 9 session 55) Thêm Mobile menu button dùng trong responsive mobile  -->
+
+
             <!-- Begin: Mobile menu button -->
+            <!-- (Chapter 9 session 55) Thêm Mobile menu button dùng trong responsive mobile  -->
             <div id="mobile-menu" class="mobile-menu-btn">
                 <i class="menu-icon ti-menu"></i>
             </div>
@@ -90,15 +92,17 @@
                     <!-- Sau khi áp dụng row-colume layout bài 48 thì thêm vào class 'col' 'col-third' và
                     thay thế luôn class 'member-item' bằng class chung có tên 'text-center', vì cứ chỗ nào 
                     cần căn giữa thì dùng class 'text-center' này-->
-                    <div class="col col-third text-center">
+                    <!-- (Chapter 9 lesson 58) Thêm class 'member-item' để responsive cho Mobile-->
+                    <!-- Thêm class chung s-col-full với class mt-16 với ý nghĩa giống phần place-list bên dưới -->
+                    <div class="col col-third s-col-full mt-16 text-center">
                         <p class="member-name">Name</p>
                         <img src="./assets/img/band/member1.jpg" alt="Name" class="member-img">
                     </div>
-                    <div class="col col-third text-center">
+                    <div class="col col-third s-col-full mt-16 text-center">
                         <p class="member-name">Name</p>
                         <img src="./assets/img/band/member1.jpg" alt="Name" class="member-img">
                     </div>
-                    <div class="col col-third text-center">
+                    <div class="col col-third s-col-full mt-16 text-center">
                         <p class="member-name">Name</p>
                         <img src="./assets/img/band/member1.jpg" alt="Name" class="member-img">
                     </div>
@@ -130,7 +134,12 @@
                         <!-- Thêm vào class 'col' đã css vào đây (áp dụng phương pháp row - colume layout) (bài 48)-->
                         <!-- Xóa class 'place-item' và thay thế bằng class 'col-third' vừa css (áp dụng phương pháp 
                         row - colume layout) (bài 48) -->
-                        <div class="col col-third">
+                        <!-- Thêm class chung 'mt-16' (margin-top 16) và giảm margin-top của class 'place-list' từ 32 xuống 16 để khi
+                        để nó công với nhau bằng 32 như củ và khi nó chuyển sang Mobile thì các place cũng tự margin-top 16px thì code 
+                        sẽ ngắn hơn  -->
+                        <!-- Thêm class 's-col-full' để responsive riêng cho nó khi trên Mobile, s là(small) cho Mobile,
+                        m là (medium) cho Tablet, l là (large) trên PC. Vì ở đây là Mobile nên đặt trước class là s -->
+                        <div class="col col-third s-col-full mt-16">
                             <img src="./assets/img/places/place1.jpg" alt="New York" class="place-img">
                             <!-- Đặt 1 thẻ div chứa phần content của place "New York" để dễ cho việc padding -->
                             <div class="place-body">
@@ -148,7 +157,7 @@
                         <!-- Thêm vào class 'col' đã css vào đây (áp dụng phương pháp row - colume layout) (bài 48)-->
                         <!-- Xóa class 'place-item' và thay thế bằng class 'col-third' vừa css (áp dụng phương pháp 
                         row - colume layout) (bài 48) -->
-                        <div class="col col-third">
+                        <div class="col col-third s-col-full mt-16">
                             <img src="./assets/img/places/place2.jpg" alt="Paris" class="place-img">
                             <!-- Đặt 1 thẻ div chứa phần content của place "Paris" để dễ cho việc padding -->
                             <div class="place-body">
@@ -162,7 +171,7 @@
                         <!-- Thêm vào class 'col' đã css vào đây (áp dụng phương pháp row - colume layout) (bài 48)-->
                         <!-- Xóa class 'place-item' và thay thế bằng class 'col-third' vừa css (áp dụng phương pháp 
                         row - colume layout) (bài 48) -->
-                        <div class="col col-third">
+                        <div class="col col-third s-col-full mt-16">
                             <img src="./assets/img/places/place3.jpg" alt="San Francisco" class="place-img">
                             <!-- Đặt 1 thẻ div chứa phần content của place "San Francisco" để dễ cho việc padding -->
                             <div class="place-body">
@@ -424,14 +433,30 @@
             // Sau khi lấy ra tất cả phần tử trong mãng bằng vòng lập thì bây giờ bắt sự kiện click 
             // cho tất cả phần tử đó, múc đích là nếu user có click vào bất kỳ phần tử nào của mãng thi 
             // nó cũng ẩn cái menu đi 
-            menuItem.onclick = function () {
+            menuItem.onclick = function (event) {
                 // Muốn kiểm tra nó có in ra chính nó khi user click vào thẻ a nào thì console.log (this)
                 // để nó in ra chính cái thẻ mà nó được click
                 // console.log(this);
 
-                // Để ẩn sau khi users click vào bất kỳ thẻ nào trong menu thì cũng ẩn y như khi user click
-                // vào Mobile menu icon
-                header.style.height = null;
+
+                // Kiểm tra xem thẻ con của Mobile Menu sau khi được click vào nó có anh chị em liền kề hay không
+                // và nếu có anh chị em liền kề thì kiểm tra tiếp anh chị em liền kề của nó có class là 'subnav' hay không
+                // Nếu thỏa 2 điều kiện này thì gán cho  biến isParentMenu. Ở trường hợp này thì chỉ có thẻ li 'MORE' là có
+                // anh chị em liền kề thôi, và anh chị em liền kề nó cũng có class 'subnav' nên thỏa điều kiện 
+                var isParentMenu = this.nextElementSibling && this.nextElementSibling.classList.contains('subnav');
+
+                if(isParentMenu){
+                    // Nếu nó là isParentMenu thì nó sẽ bỏ qua hành vi mặc định, vì mặc định của thẻ a là cứ click vào thì
+                    // thì nó dẫn đến link trong href, mà bây giờ mình chỉ muốn bấm vào MORE để hiển thị Menu cấp 2 'subnav'
+                    // chứ không cần nó link đến page nào hay phải load lại trang (khi đặt href #). Nên ta sẻ bỏ hành vi mặc định
+                    // khi nhấn vào MORE, sau khi bỏ hành vi mậc đình thì nó không bị trôi lên đầu như lúc trước nữa. Và nó cũng 
+                    // không bị ẩn Menu khi ta click vào MORE, nó chỉ ẩn khi click các nút khác thôi
+                    event.preventDefault();
+                }else{
+                    // Để ẩn  sau khi users click vào bất kỳ thẻ nào trong menu thì cũng ẩn y như khi user click
+                    // vào Mobile menu icon
+                    header.style.height = null;
+                }
             }
         }
 
