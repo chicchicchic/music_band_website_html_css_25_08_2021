@@ -15,10 +15,27 @@ phần tablet khi độ rộng >= 740 & < 1024*/
 /* Responsive cho Mobile, min-width: 1024px nghĩa là nó sẽ áp dụng những thuộc tính trong 
 phần mobile khi độ rộng < 740*/
 @media (max-width: 740px) {
+    /* Common Classes */
+    /* Class s-full-width để nó chiếm hết chiều rộng. Mặc dù 2 class chung này nó có chung thuộc tính 
+    là witth 100% nhưng phải đặt 2 class khác nhau để khi dùng cho nó chính xác. Trong trường hợp này 
+    s-full-width 100% để responsive cho Submit Button, mà Submit button nó không phải là cột, nên nếu 
+    dùng class 's-col-full' vào thì không hợp ngữ nghĩa chút nào, sau này dễ gây hiểu nhầm*/
+    .s-full-width,
     .s-col-full {
-        width: 100%;
+        width: 100% !important;    
+    }
+    
+
+    .s-mt-8 {
+        margin-top: 8px !important;
     }
 
+
+
+
+
+
+    /* Begin: Header */
     #header {
         overflow: hidden;
     }
@@ -74,6 +91,9 @@ phần mobile khi độ rộng < 740*/
         padding: 5px 41px;
     }
 
+    /* End: Header */
+
+    /* Begin: Content section */
     #content .member-item {
         margin-top: 30px;
         width: 100%;
@@ -82,6 +102,14 @@ phần mobile khi độ rộng < 740*/
     #content .member-img {
         width: 60%;
     }
+    /* End: Content section */
+
+    /* Begin: Contact Form */
+    .contact-form {
+        margin-top: 16px;
+    }
+    /* End: Contact Form */
+
 
     
 

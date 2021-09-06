@@ -65,6 +65,10 @@ chung này */
     margin-top: 16px !important;
 }
 
+.mt-32 {
+    margin-top: 32px;
+}
+
 /* Tạo class btn này vì tất cả các botton đều y nhau nên cho nó vào phần dùng chung để đở phải 
 css lại nhiều */
 .btn {
