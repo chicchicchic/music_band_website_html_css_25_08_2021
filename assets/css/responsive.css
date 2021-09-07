@@ -5,11 +5,54 @@ khi độ rộng >= 1024 */
 
 }
 
+/* Responsive cho Tablet & Mobile */
+/* Vì có những Bugs có thể fix 1 lần cả Tablet và Mobile nên không cần Responsive cho từng cái */
+/* MObile thì < 740, Tablet thì từ 740 đến 1023, thế nên responsive cho cả 2 thì từ 0 đến 1023 */
+/* Fix này là fix Bug UX (Nâng cao trải nghiệm người dùng) */
+@media (max-width: 1023px) {
+    .btn {
+        padding: 16px 16px;
+    }
+
+    #nav .subnav a {
+        padding: 5px 12px;
+    }
+
+
+    /* Begin: Contact Form */
+    .contact-form .form-control {
+        padding: 15px;
+    }
+
+    .contact-info{
+        line-height: 2;
+    }
+    /* End: Contact Form */
+
+
+    /* Begin: Footer */
+    #footer .socials-list {
+        font-size: 48px;
+    }
+    
+
+    #footer .copyright a {
+        padding: 12px 0;
+        /* Thêm  display: inline-block để nó tách với các icon bên trên mới thấy sự thây đổi */
+        display: inline-block;
+    }
+    /* End: Footer */
+
+}
+
+
 /* Responsive cho Tablet (iPad), min-width: 1024px nghĩa là nó sẽ áp dụng những thuộc tính trong 
 phần tablet khi độ rộng >= 740 & < 1024*/
 /* Vì project nầy đơn giản nên ở bài 54 thì đã responsive luôn Tablet rồi */
 @media (min-width: 740px) and (max-width: 1023px) {
-
+    #footer .socials-list a {
+        margin: 0 8px;
+    }
 }
 
 /* Responsive cho Mobile, min-width: 1024px nghĩa là nó sẽ áp dụng những thuộc tính trong 
@@ -106,7 +149,7 @@ phần mobile khi độ rộng < 740*/
 
     /* Begin: Contact Form */
     .contact-form {
-        margin-top: 16px;
+        margin-top: 32px;
     }
     /* End: Contact Form */
 

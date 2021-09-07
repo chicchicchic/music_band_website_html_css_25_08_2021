@@ -691,7 +691,7 @@ của class menu-icon bên dưới hơn */
 
     .contact-info {
         font-size: 18px;
-        line-height: 0.5;
+        line-height: 1.5;
     }
 
     /* Cách selector này là cách css selector nâng cao, ý nghĩa là 
@@ -699,6 +699,17 @@ của class menu-icon bên dưới hơn */
     .contact-info i[class*="ti-"] {
         width: 30px;
         display: inline-block;
+    }
+
+    /* (Chapter 9 lesson 60) Fix UX, đặt màu cho link vào đổi màu khi hover vào link
+    tạo cảm giác bấm được cho Users */
+    .contact-info a {
+        color: #101aef;
+        opacity: 0.8;
+    }
+
+    .contact-info a:hover {
+        opacity: 1;
     }
     /* End: Contact Info */
 
@@ -762,7 +773,7 @@ của class menu-icon bên dưới hơn */
 
 #footer .copyright a,
 #footer .socials-list a:hover {
-    color: rgba(0, 0, 0, 0.4);
+    color: rgba(0, 0, 0, 0.6);
     
 }
 
