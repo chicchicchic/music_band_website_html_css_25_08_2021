@@ -1,15 +1,20 @@
 /* Responsive cho PC, min-width: 1024px nghĩa là nó sẽ áp dụng những thuộc tính trong phần PC
-khi độ rộng >= 1024 */
+khi độ rộng >= 1024 (đặt min-width: 1024px)*/
 /* Vì ở project này thì PC ngon rồi nên kh6ng cần responsive nữa */
-@media (min-width: 1024px) {
+/* Chuyển tất cả giá trị có đơn vị là 'px' sang 'em' (chỉ chuyển trong @media responsive) để không bị 
+lỗi trên đa số các trình duyệt, search keyword 'convert px to em' và gán giá trị px và nhấn convert 
+để chuyển sang em  */
+/* 1024px = 64em */
+@media (min-width: 64em) {
 
 }
 
 /* Responsive cho Tablet & Mobile */
 /* Vì có những Bugs có thể fix 1 lần cả Tablet và Mobile nên không cần Responsive cho từng cái */
-/* MObile thì < 740, Tablet thì từ 740 đến 1023, thế nên responsive cho cả 2 thì từ 0 đến 1023 */
+/* MObile thì < 740, Tablet thì từ 740 đến < 1024, thế nên responsive cho cả 2 thì từ 0 đến 1023 */
 /* Fix này là fix Bug UX (Nâng cao trải nghiệm người dùng) */
-@media (max-width: 1023px) {
+/* 1023px = 63.9375em */
+@media (max-width: 63.9375em) {
     .btn {
         padding: 16px 16px;
     }
@@ -22,10 +27,16 @@ khi độ rộng >= 1024 */
     /* Begin: Contact Form */
     .contact-form .form-control {
         padding: 15px;
+        /* Css chữ trong ô input cho to xíu */
+        font-size: 16px;
     }
 
     .contact-info{
         line-height: 2;
+    }
+
+    .contact-submit-btn {
+        font-size: 16px;
     }
     /* End: Contact Form */
 
@@ -47,17 +58,19 @@ khi độ rộng >= 1024 */
 
 
 /* Responsive cho Tablet (iPad), min-width: 1024px nghĩa là nó sẽ áp dụng những thuộc tính trong 
-phần tablet khi độ rộng >= 740 & < 1024*/
+phần tablet khi độ rộng >= 740 & < 1024 (đặt min-width: 740px và max-width: 1023px)*/
 /* Vì project nầy đơn giản nên ở bài 54 thì đã responsive luôn Tablet rồi */
-@media (min-width: 740px) and (max-width: 1023px) {
+/* 740px = 46.25em và 1023px = 63.9375em*/
+@media (min-width: 46.25em) and (max-width: 63.9375em) {
     #footer .socials-list a {
         margin: 0 8px;
     }
 }
 
-/* Responsive cho Mobile, min-width: 1024px nghĩa là nó sẽ áp dụng những thuộc tính trong 
-phần mobile khi độ rộng < 740*/
-@media (max-width: 740px) {
+/* Responsive cho Mobile, max-width: 740px nghĩa là nó sẽ áp dụng những thuộc tính trong 
+phần mobile khi độ rộng < 740 (đặt max-width: 739px) */
+/* 739px = 46.1875em */
+@media (max-width: 46.1875em) {
     /* Common Classes */
     /* Class s-full-width để nó chiếm hết chiều rộng. Mặc dù 2 class chung này nó có chung thuộc tính 
     là witth 100% nhưng phải đặt 2 class khác nhau để khi dùng cho nó chính xác. Trong trường hợp này 
@@ -72,8 +85,6 @@ phần mobile khi độ rộng < 740*/
     .s-mt-8 {
         margin-top: 8px !important;
     }
-
-
 
 
 

@@ -81,6 +81,13 @@ css lại nhiều */
     lên trên sau khi padding */
     display: inline-block;
     border: none;
+    /* (Chapter 9 lesson 61) Fix bugs on Mobile: Bỏ đi css mặc định trên hầu hết trình duyệt */
+    appearance: none;
+    /* (Chapter 9 lesson 61) Fix bugs on Mobile: Bỏ đi css mặc định riêng trên trình duyệt Safari,
+    nếu trên trình duyệt Safari mà không thêm đoạn này thì cái nút sẽ không nhận css của mình mà
+    nó lấy css mặc định của nó */
+    -webkit-appearance: none;
+
 
 }
 
@@ -282,7 +289,7 @@ của class menu-icon bên dưới hơn */
     position: relative;
     margin-top: 46px;
     padding-top: 50%;
-    background: url('/assets/img/slider/slider1.jpg') top center / cover no-repeat;
+    background: url('../img/slider/slider1.jpg') top center / cover no-repeat;
 
     
 }
@@ -317,6 +324,15 @@ của class menu-icon bên dưới hơn */
 #slider .text-decription {
     font-size: 15px;
     margin-top: 25px;
+    /* (Chapter 9 lesson 62) Fix bugs khi chữ màu trắng mà khi đưa vào hình có những chỗ màu trắng
+    nên nó bị rất khó nhìn vì trùng màu, nên ta đặt thêm cái bóng lan tỏa khi vô tình kéo thả trúng
+    chỗ hình cùng màu chữ */
+    /* Giá trị đầu tiên là ngã sang trái hoặc phải, đặt 0 là đứng yên, giá trị âm hay dương thì sẽ
+    ngả khác nhau */
+    /* Giá trị thứ 2 là ngã lên hoặc xuống, đặt 0 là đứng yên, giá trị âm hay dương thì sẽ
+    ngả khác nhau */
+    /* Giá trị thứ 3 là độ dày của bóng */
+    text-shadow: 0 0 1px #000;
 }
 
 /* End: Slider */
@@ -747,11 +763,10 @@ của class menu-icon bên dưới hơn */
 
 
 /* Begin: Map Image */
-
-/* End: Map Image */
 .map-section img {
     width: 100%;
 }
+/* End: Map Image */
 
 /* End: Content */
 
